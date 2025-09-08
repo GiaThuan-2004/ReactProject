@@ -1,9 +1,9 @@
 import reactLogo from "../../assets/react.svg"
 
-const ImageTodo = () => {
+const ImageTodo = (props) => {
     return (
         <div className="icon-container">
-            <img src={reactLogo} alt="react" className="icon-react" />
+            <img src={props['src-img']} alt="react" className="icon-react" />
         </div>
     );
 }

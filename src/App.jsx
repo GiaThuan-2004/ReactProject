@@ -7,14 +7,19 @@ import reactLogo from "./assets/react.svg"
 const App = () => {
 
   const people = { name: 'Thuan', address: 'Thuan An, CT city' };
+  const toDoNew = (name) => {
+    console.log(`My name is ${name}`);
+  }
 
   return (
     <div className="todo-container">
       <h1 className="todo-title">To Do List</h1>
       <Action />
       <Data
-        name={people.name}
-        address={people.address}
+        // name={people.name}
+        // address={people.address}
+        people={people}
+        toDoNew={toDoNew}
       />
       <ImageTodo
         src-img={reactLogo}

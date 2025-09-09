@@ -3,12 +3,16 @@ import ImageTodo from "./component/todo/todoImage"
 import Data from "./component/todo/todoData"
 import "./component/todo/todostyle.css"
 import reactLogo from "./assets/react.svg"
+import { useState } from "react"
 
 const App = () => {
 
+  const [toDoList, setToDoList] = useState([{ name: "Thuan", address: "HG" },
+  { name: "Hieu", address: "HG" }]);
+
   const people = { name: 'Thuan', address: 'Thuan An, CT city' };
   const toDoNew = (name) => {
-    console.log(`My name is ${name}`);
+    // console.log(`My name is ${name}`);
   }
 
   return (
@@ -20,6 +24,7 @@ const App = () => {
         // address={people.address}
         people={people}
         toDoNew={toDoNew}
+        toDoList={toDoList}
       />
       <ImageTodo
         src-img={reactLogo}

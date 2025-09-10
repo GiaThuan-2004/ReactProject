@@ -8,8 +8,8 @@ const Action = ({ toDoNew }) => {
         setValueInput(event.target.value);
     }
     const clickToGetData = () => {
-        setValueInput("");
         toDoNew(valueInput);
+        setValueInput("");
     }
 
     return (

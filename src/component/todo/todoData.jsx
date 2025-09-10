@@ -1,12 +1,12 @@
 
-const Data = ({toDoList }) => {
+const Data = ({ toDoList, deleteData }) => {
     return (
         <div className="data-container">
             {toDoList.map((data) => {
                 return (
-                    <div className="todo-item">
+                    <div className="todo-item" key={data.id}>
                         <div className="text">{data.name}</div>
-                        <button type="button">Delete</button>
+                        <button onClick={() => {deleteData(data.id)}} type="button">Delete</button>
                     </div>
                 );
             })}

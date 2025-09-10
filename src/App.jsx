@@ -7,6 +7,7 @@ import { useState } from "react"
 
 const App = () => {
 
+  // Add
   const [toDoList, setToDoList] = useState([]);
 
   const toDoNew = (name) => {
@@ -17,6 +18,11 @@ const App = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+
+  // Delete
+  const deleteData = (id) => {
+    setToDoList([...toDoList].filter((curData) => curData.id !== id));
+  }
 
   return (
     <div className="todo-container">
@@ -32,15 +38,10 @@ const App = () => {
         :
         <Data
           toDoList={toDoList}
+          deleteData={deleteData}
         />
       }
 
-      {/* <Data
-        toDoList={toDoList}
-      />
-      <ImageTodo
-        src-img={reactLogo}
-      /> */}
     </div>
   )
 }

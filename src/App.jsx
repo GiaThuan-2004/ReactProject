@@ -24,12 +24,23 @@ const App = () => {
       <Action
         toDoNew={toDoNew}
       />
-      <Data
+
+      {toDoList.length === 0 ?
+        <ImageTodo
+          src-img={reactLogo}
+        />
+        :
+        <Data
+          toDoList={toDoList}
+        />
+      }
+
+      {/* <Data
         toDoList={toDoList}
       />
       <ImageTodo
         src-img={reactLogo}
-      />
+      /> */}
     </div>
   )
 }

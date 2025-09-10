@@ -39,7 +39,7 @@ html {
 .data-container {
     font-size: 1.5rem;
     margin-top: 20px;
-    padding-left: 15px;
+    padding: 15px;
     width: calc(100% - 55px);
     border-radius: 12px;
     background-color: #eee8e8;
@@ -80,4 +80,19 @@ html {
     .icon-react {
         animation: logo-spin infinite 20s linear;
     }
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    border-bottom: 2px solid rgba(145, 145, 145, 0.737);
+}
+
+.todo-item:first-child {
+    margin-top: 0;
+}
+
+.empty-data {
+    display: none;
 }

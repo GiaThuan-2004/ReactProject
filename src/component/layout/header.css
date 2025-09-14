@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 200px;
+    padding-top: 20px;
+}
+
+.navbar .nav-list {
+    display: flex;
+    list-style-type: none;
+}
+
+.navbar .nav-list .list-item {
+    font-size: 2rem;
+    padding: 20px;
+    /* border: 1px solid gainsboro; */
+}
+
+.navbar .login-register {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar .login-register .btn {
+    display: inline-block;
+    font-size: 2rem;
+    color: black;
+    padding: 30px;
+}
+
+.navbar .login-register .btn:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(85, 85, 250);
+    border-radius: 12px;
+    height: 30px;
+}

@@ -12,6 +12,7 @@
 }
 
 .navbar .nav-list .list-item {
+    display: block;
     font-size: 2rem;
     padding: 20px;
     /* border: 1px solid gainsboro; */

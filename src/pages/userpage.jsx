@@ -1,6 +1,6 @@
 const UserPage = () => {
     return (
-        <div>User Page</div>
+        <div style={{fontSize:"2rem"}}>User Page</div>
     )
 }
 

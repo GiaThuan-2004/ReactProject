@@ -1,6 +1,6 @@
 const ProductPage = () => {
     return (
-        <div>Product Page</div>
+        <div style={{ fontSize: "2rem" }}>Product Page</div>
     )
 }
 

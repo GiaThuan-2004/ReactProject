@@ -8,7 +8,7 @@ const UserForm = () => {
     const [phoneState, setPhoneState] = useState("");
 
     const getInput = () => {
-        console.log(nameState, emailState, passState, phoneState);
+        console.log({ nameState, emailState, passState, phoneState });
     }
 
     return (
@@ -18,7 +18,6 @@ const UserForm = () => {
                 <Input
                     value={nameState}
                     onChange={event => setNameState(event.target.value)}>
-
                 </Input>
             </div>
             <div className='form-item'>
@@ -26,7 +25,6 @@ const UserForm = () => {
                 <Input
                     value={emailState}
                     onChange={event => setEmailState(event.target.value)}>
-
                 </Input>
             </div>
             <div className='form-item'>
@@ -34,7 +32,6 @@ const UserForm = () => {
                 <Input.Password
                     value={passState}
                     onChange={event => setPassState(event.target.value)}>
-
                 </Input.Password>
             </div>
             <div className='form-item'>
@@ -42,7 +39,6 @@ const UserForm = () => {
                 <Input
                     value={phoneState}
                     onChange={event => setPhoneState(event.target.value)}>
-
                 </Input>
             </div>
             <div>

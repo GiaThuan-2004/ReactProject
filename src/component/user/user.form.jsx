@@ -10,13 +10,18 @@ const UserForm = () => {
     const [phoneState, setPhoneState] = useState("");
 
     const getInput = async () => {
+
         const response = await createUserApi(nameState, emailState, passState, phoneState)
-        console.log(response)
         // Tao thong bao khi tao user thanh cong
         if (response.data) {
             notification.success({
-                message: 'create user',
+                message: 'Create user',
                 description: 'Tạo mới user thành công'
+            })
+        } else {
+            notification.error({
+                message: 'Error create user',
+                description: JSON.stringify(response.message)
             })
         }
     }

@@ -1,4 +1,4 @@
-import { Input, Button, notification } from 'antd';
+import { Input, Button, notification, Modal } from 'antd';
 import { useState } from "react";
 import { createUserApi } from '../../service/api.service';
 
@@ -18,6 +18,11 @@ const UserForm = () => {
                 message: 'Create user',
                 description: 'Tạo mới user thành công'
             })
+            setNameState("")
+            setEmailState("")
+            setPassState("")
+            setPhoneState("")
+            setIsModalOpen(false);
         } else {
             notification.error({
                 message: 'Error create user',
@@ -26,41 +31,56 @@ const UserForm = () => {
         }
     }
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div className="form-container">
-            <div className='form-item'>
-                <span>FullName</span>
-                <Input
-                    value={nameState}
-                    onChange={event => setNameState(event.target.value)}>
-                </Input>
+        <>
+            <div className='action-block'>
+                <h3>Table Users</h3>
+                <Button type="primary" onClick={() => setIsModalOpen(true)}>
+                    Create User
+                </Button>
             </div>
-            <div className='form-item'>
-                <span>Email</span>
-                <Input
-                    value={emailState}
-                    onChange={event => setEmailState(event.target.value)}>
-                </Input>
-            </div>
-            <div className='form-item'>
-                <span>Password</span>
-                <Input.Password
-                    value={passState}
-                    onChange={event => setPassState(event.target.value)}>
-                </Input.Password>
-            </div>
-            <div className='form-item'>
-                <span>Phone</span>
-                <Input
-                    value={phoneState}
-                    onChange={event => setPhoneState(event.target.value)}>
-                </Input>
-            </div>
-            <div>
-                <Button type='primary' onClick={() => getInput()}>Create User</Button>
-            </div>
-        </div>
+            <Modal
+                title="Create New User"
+                closable={{ 'aria-label': 'Custom Close Button' }}
+                open={isModalOpen}
+                onOk={() => getInput()}
+                onCancel={() => setIsModalOpen(false)}
+                maskClosable={false}
+            >
+                <div className='form-container'>
+                    <div className='form-item'>
+                        <span>FullName</span>
+                        <Input
+                            value={nameState}
+                            onChange={event => setNameState(event.target.value)}>
+                        </Input>
+                    </div>
+                    <div className='form-item'>
+                        <span>Email</span>
+                        <Input
+                            value={emailState}
+                            onChange={event => setEmailState(event.target.value)}>
+                        </Input>
+                    </div>
+                    <div className='form-item'>
+                        <span>Password</span>
+                        <Input.Password
+                            value={passState}
+                            onChange={event => setPassState(event.target.value)}>
+                        </Input.Password>
+                    </div>
+                    <div className='form-item'>
+                        <span>Phone</span>
+                        <Input
+                            value={phoneState}
+                            onChange={event => setPhoneState(event.target.value)}>
+                        </Input>
+                    </div>
+                </div>
+            </Modal>
+        </>
     );
 }
 

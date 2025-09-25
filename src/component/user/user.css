@@ -3,6 +3,10 @@
     flex-direction: column;
     gap: 20px;
     font-size: 1.5rem;
-    padding: 0 100px;
     margin-bottom: 20px;
+}
+
+.action-block {
+    display: flex;
+    justify-content: space-between;
 }

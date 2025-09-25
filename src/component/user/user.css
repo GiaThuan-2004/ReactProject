@@ -10,3 +10,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.action-block h3 {
+    font-size: 3rem;
+}

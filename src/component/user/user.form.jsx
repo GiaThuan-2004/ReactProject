@@ -1,9 +1,10 @@
 import { Input, Button, notification, Modal } from 'antd';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createUserApi } from '../../service/api.service';
 
 
-const UserForm = () => {
+const UserForm = ({ getDataUsers }) => {
+    // console.log(getDataUsers)
     const [nameState, setNameState] = useState("");
     const [emailState, setEmailState] = useState("");
     const [passState, setPassState] = useState("");
@@ -18,11 +19,16 @@ const UserForm = () => {
                 message: 'Create user',
                 description: 'Tạo mới user thành công'
             })
+            //xoa cac gia tri trong o input va dong modal khi tao user thanh cong
             setNameState("")
             setEmailState("")
             setPassState("")
             setPhoneState("")
             setIsModalOpen(false);
+
+            //render lai table user sao khi tao moi thanh cong (khong can refresh la trang)
+            getDataUsers();
+
         } else {
             notification.error({
                 message: 'Error create user',

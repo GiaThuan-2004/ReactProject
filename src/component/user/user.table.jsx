@@ -1,14 +1,6 @@
 import { Table } from 'antd';
-import { useEffect, useState } from 'react';
-import { getAllUserApi } from '../../service/api.service';
 
-const TableUser = () => {
-
-    const [dataUsers, setDataUsers] = useState([]);
-
-    useEffect(() => {
-        getDataUsers();
-    }, [])
+const TableUser = ({ dataUsers }) => {
 
     const columns = [
         {
@@ -24,12 +16,6 @@ const TableUser = () => {
             dataIndex: 'email',
         }
     ];
-
-    const getDataUsers = async () => {
-        const response = await getAllUserApi(); //Lay api
-        console.log(response.data)
-        setDataUsers(response.data) //Thay doi hook
-    }
 
     return (
         <div className="table-container">

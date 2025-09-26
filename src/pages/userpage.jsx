@@ -2,7 +2,7 @@ import UserForm from "../component/user/user.form";
 import TableUser from "../component/user/user.table";
 import "../component/user/user.css";
 import { useEffect, useState } from 'react';
-import { getAllUserApi } from '../service/api.service';
+import { deleteUserApi, getAllUserApi } from '../service/api.service';
 
 
 const UserPage = () => {
@@ -22,7 +22,8 @@ const UserPage = () => {
             <UserForm getDataUsers={getDataUsers} />
             <TableUser
                 dataUsers={dataUsers}
-                getDataUsers={getDataUsers} />
+                getDataUsers={getDataUsers}
+            />
         </>
     )
 }

@@ -3,9 +3,9 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import UpdateModal from './user.update.modal';
 import { useState } from "react";
 import DetailModal from './detail.modal';
-import { render } from 'react-dom';
+import DeleteUser from './user.delete';
 
-const TableUser = ({ dataUsers, getDataUsers }) => {
+const TableUser = ({ dataUsers, getDataUsers, deleteUser }) => {
 
     const [dataUpdate, setDataUpdate] = useState(null)
     const [dataDetail, setDataDetail] = useState(null)
@@ -47,7 +47,10 @@ const TableUser = ({ dataUsers, getDataUsers }) => {
                             }}
                             style={{ color: 'orange', cursor: 'pointer' }}
                         />
-                        <DeleteOutlined style={{ color: 'blue', cursor: 'pointer' }} />
+                        <DeleteUser
+                            getDataUsers={getDataUsers}
+                            id={record._id}
+                        />
                     </Space>
                 );
             }

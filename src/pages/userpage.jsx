@@ -9,7 +9,6 @@ const UserPage = () => {
     const [dataUsers, setDataUsers] = useState([]);
 
     useEffect(() => {
-        console.log(1)
         getDataUsers();
     }, [])
 

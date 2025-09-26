@@ -1,5 +1,5 @@
 import { Input, Button, notification, Modal } from 'antd';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createUserApi } from '../../service/api.service';
 
 
@@ -9,6 +9,7 @@ const UserForm = ({ getDataUsers }) => {
     const [emailState, setEmailState] = useState("");
     const [passState, setPassState] = useState("");
     const [phoneState, setPhoneState] = useState("");
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
     const getInput = async () => {
 
@@ -24,7 +25,7 @@ const UserForm = ({ getDataUsers }) => {
             setEmailState("")
             setPassState("")
             setPhoneState("")
-            setIsModalOpen(false);
+            setIsCreateModalOpen(false);
 
             //render lai table user sao khi tao moi thanh cong (khong can refresh la trang)
             getDataUsers();
@@ -37,23 +38,22 @@ const UserForm = ({ getDataUsers }) => {
         }
     }
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     return (
         <>
             <div className='action-block'>
                 <h3>Table Users</h3>
-                <Button type="primary" onClick={() => setIsModalOpen(true)}>
+                <Button type="primary" onClick={() => setIsCreateModalOpen(true)}>
                     Create User
                 </Button>
             </div>
             <Modal
                 title="Create New User"
                 closable={{ 'aria-label': 'Custom Close Button' }}
-                open={isModalOpen}
+                open={isCreateModalOpen}
                 onOk={() => getInput()}
-                onCancel={() => setIsModalOpen(false)}
+                onCancel={() => setIsCreateModalOpen(false)}
                 maskClosable={false}
+                okText={'Create'}
             >
                 <div className='form-container'>
                     <div className='form-item'>

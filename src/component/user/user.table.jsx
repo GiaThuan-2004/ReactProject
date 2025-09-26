@@ -2,11 +2,15 @@ import { Table, Space } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import UpdateModal from './user.update.modal';
 import { useState } from "react";
+import DetailModal from './detail.modal';
+import { render } from 'react-dom';
 
 const TableUser = ({ dataUsers, getDataUsers }) => {
 
     const [dataUpdate, setDataUpdate] = useState(null)
+    const [dataDetail, setDataDetail] = useState(null)
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+    const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
     const columns = [
         {
@@ -15,7 +19,10 @@ const TableUser = ({ dataUsers, getDataUsers }) => {
             // render giao dien bang react
             render: (_, record) => {
                 return (
-                    <a href="#!">{record._id}</a>
+                    <a href="#!" onClick={() => {
+                        setIsDetailModalOpen(true)
+                        setDataDetail(record)
+                    }}>{record._id}</a>
                 )
             }
         },
@@ -60,6 +67,11 @@ const TableUser = ({ dataUsers, getDataUsers }) => {
                 isUpdateModalOpen={isUpdateModalOpen}
                 setIsUpdateModalOpen={setIsUpdateModalOpen}
                 getDataUsers={getDataUsers}
+            />
+            <DetailModal
+                isDetailModalOpen={isDetailModalOpen}
+                setIsDetailModalOpen={setIsDetailModalOpen}
+                dataDetail={dataDetail}
             />
         </div>
     );

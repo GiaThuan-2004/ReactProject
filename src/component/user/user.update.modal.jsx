@@ -1,8 +1,10 @@
-import { Input, Modal } from 'antd';
+import { Input, Modal, notification } from 'antd';
 import { useEffect, useState } from "react";
+import '../../service/api.service'
+import { updateUserApi } from '../../service/api.service';
 
 
-const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdateModalOpen }) => {
+const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdateModalOpen, getDataUsers }) => {
     const [nameState, setNameState] = useState("");
     const [phoneState, setPhoneState] = useState("");
     const [idState, setIdState] = useState("")
@@ -17,39 +19,34 @@ const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdate
         }
     }, [dataUpdate])
 
-    const getUpdate = () => {
+    const getUpdate = async () => {
 
-        console.log('Update component')
+        const response = await updateUserApi(idState, nameState, phoneState)
+        // Tao thong bao khi tao user thanh cong
+        if (response.data) {
+            notification.success({
+                message: 'Update User',
+                description: 'Cập nhật user thành công'
+            })
+            //xoa cac gia tri trong o input va dong modal khi tao user thanh cong
+            closeBtn();
 
-        // const response = await createUserApi(nameState, emailState, passState, phoneState)
-        // // Tao thong bao khi tao user thanh cong
-        // if (response.data) {
-        //     notification.success({
-        //         message: 'Create user',
-        //         description: 'Tạo mới user thành công'
-        //     })
-        //     //xoa cac gia tri trong o input va dong modal khi tao user thanh cong
-        //     setNameState("")
-        //     setEmailState("")
-        //     setPassState("")
-        //     setPhoneState("")
-        //     setIsUpdateModalOpen(false);
+            //render lai table user sao khi tao moi thanh cong (khong can refresh la trang)
+            getDataUsers();
 
-        //     //render lai table user sao khi tao moi thanh cong (khong can refresh la trang)
-        //     getDataUsers();
-
-        // } else {
-        //     notification.error({
-        //         message: 'Error create user',
-        //         description: JSON.stringify(response.message)
-        //     })
-        // }
+        } else {
+            notification.error({
+                message: 'Error create user',
+                description: JSON.stringify(response.message)
+            })
+        }
     }
 
     const closeBtn = () => {
         // setNameState("")
         // setPhoneState("")
         // setIdState("")
+        setIsUpdateModalOpen(false)
         setDataUpdate(null)
     }
 
@@ -61,10 +58,7 @@ const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdate
                 closable={{ 'aria-label': 'Custom Close Button' }}
                 open={isUpdateModalOpen}
                 onOk={() => getUpdate()}
-                onCancel={() => {
-                    setIsUpdateModalOpen(false)
-                    closeBtn()
-                }}
+                onCancel={() => { closeBtn() }}
                 maskClosable={false}
                 okText={'Save'}
             >

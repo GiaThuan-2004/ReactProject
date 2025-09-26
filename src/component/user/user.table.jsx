@@ -3,7 +3,7 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import UpdateModal from './user.update.modal';
 import { useState } from "react";
 
-const TableUser = ({ dataUsers }) => {
+const TableUser = ({ dataUsers, getDataUsers }) => {
 
     const [dataUpdate, setDataUpdate] = useState(null)
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
@@ -59,6 +59,7 @@ const TableUser = ({ dataUsers }) => {
                 setDataUpdate={setDataUpdate}
                 isUpdateModalOpen={isUpdateModalOpen}
                 setIsUpdateModalOpen={setIsUpdateModalOpen}
+                getDataUsers={getDataUsers}
             />
         </div>
     );

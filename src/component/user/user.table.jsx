@@ -5,7 +5,7 @@ import { useState } from "react";
 import DetailModal from './detail.modal';
 import DeleteUser from './user.delete';
 
-const TableUser = ({ dataUsers, getDataUsers, deleteUser }) => {
+const TableUser = ({ dataUsers, getDataUsers }) => {
 
     const [dataUpdate, setDataUpdate] = useState(null)
     const [dataDetail, setDataDetail] = useState(null)
@@ -75,6 +75,7 @@ const TableUser = ({ dataUsers, getDataUsers, deleteUser }) => {
                 isDetailModalOpen={isDetailModalOpen}
                 setIsDetailModalOpen={setIsDetailModalOpen}
                 dataDetail={dataDetail}
+                getDataUsers={getDataUsers}
             />
         </div>
     );

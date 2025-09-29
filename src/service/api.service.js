@@ -12,13 +12,14 @@ const createUserApi = (fullName, email, password, phone) => {
     return axios.post(URL_BACKEND, data)
 }
 
-const updateUserApi = (_id, fullName, phone) => {
+const updateUserApi = (_id, fullName, phone, avatar = undefined) => {
     const URL_BACKEND = '/api/v1/user'
 
     const data = {
         _id: _id,
         fullName: fullName,
-        phone: phone
+        phone: phone,
+        ...(avatar && { avatar })
     }
     return axios.put(URL_BACKEND, data)
 }
@@ -33,4 +34,20 @@ const deleteUserApi = (id) => {
     return axios.delete(URL_BACKEND)
 }
 
-export { createUserApi, updateUserApi, getAllUserApi, deleteUserApi }
+const upLoadFileApi = (file, folder) => {
+    const BACKEND_URL = '/api/v1/file/upload'
+
+    const config = {
+        headers: {
+            'upload-type': folder,
+            "Content-Type": "multipart/form-data",
+        }
+    }
+
+    const formData = new FormData()
+    formData.append('fileImg', file)
+
+    return axios.post(BACKEND_URL, formData, config)
+}
+
+export { createUserApi, updateUserApi, getAllUserApi, deleteUserApi, upLoadFileApi }

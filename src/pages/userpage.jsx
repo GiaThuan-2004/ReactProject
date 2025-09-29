@@ -2,7 +2,7 @@ import UserForm from "../component/user/user.form";
 import TableUser from "../component/user/user.table";
 import "../component/user/user.css";
 import { useEffect, useState } from 'react';
-import { deleteUserApi, getAllUserApi } from '../service/api.service';
+import { getAllUserApi } from '../service/api.service';
 
 
 const UserPage = () => {

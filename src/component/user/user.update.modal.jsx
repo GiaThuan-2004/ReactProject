@@ -28,6 +28,7 @@ const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdate
                 message: 'Update User',
                 description: 'Cập nhật user thành công'
             })
+            console.log(response, response.data)
             //xoa cac gia tri trong o input va dong modal khi tao user thanh cong
             closeBtn();
 

@@ -2,7 +2,10 @@ import { Drawer, Button, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { updateUserApi, upLoadFileApi } from '../../service/api.service';
 
-const DetailModal = ({ isDetailModalOpen, setIsDetailModalOpen, dataDetail, getDataUsers }) => {
+const DetailModal = (
+    { isDetailModalOpen, setIsDetailModalOpen,
+        dataDetail, getDataUsers,
+        currentPage, pageSize }) => {
 
     const [fileState, setFileState] = useState(null)
     const [previewState, setPreviewState] = useState(null)
@@ -37,7 +40,7 @@ const DetailModal = ({ isDetailModalOpen, setIsDetailModalOpen, dataDetail, getD
                 setIsDetailModalOpen(false)
                 setFileState(null)
                 setPreviewState(null)
-                getDataUsers()
+                getDataUsers(currentPage, pageSize)
 
                 notification.success({
                     message: 'Upload Success',

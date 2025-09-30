@@ -4,7 +4,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { deleteUserApi } from '../../service/api.service';
 
 
-const DeleteUser = ({ getDataUsers, id }) => {
+const DeleteUser = ({ dataUsers, getDataUsers, id, currentPage, pageSize, setCurrentPage }) => {
 
     return (
         <Popconfirm
@@ -17,7 +17,11 @@ const DeleteUser = ({ getDataUsers, id }) => {
                         message: 'Delete Success',
                         description: 'User was deleted'
                     })
-                    getDataUsers()
+                    if (dataUsers.length === 1 && +currentPage > 1) {
+                        getDataUsers(currentPage - 1, pageSize)
+                    } else {
+                        getDataUsers(currentPage, pageSize)
+                    }
                 } else {
                     notification.error({
                         message: 'Delete Failed',

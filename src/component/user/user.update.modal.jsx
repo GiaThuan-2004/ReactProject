@@ -4,7 +4,7 @@ import '../../service/api.service'
 import { updateUserApi } from '../../service/api.service';
 
 
-const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdateModalOpen, getDataUsers }) => {
+const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdateModalOpen, getDataUsers, currentPage, pageSize }) => {
     const [nameState, setNameState] = useState("");
     const [phoneState, setPhoneState] = useState("");
     const [idState, setIdState] = useState("")
@@ -22,6 +22,7 @@ const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdate
     const getUpdate = async () => {
 
         const response = await updateUserApi(idState, nameState, phoneState)
+        console.log({ currentPage, pageSize })
         // Tao thong bao khi tao user thanh cong
         if (response.data) {
             notification.success({
@@ -33,7 +34,7 @@ const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdate
             closeBtn();
 
             //render lai table user sao khi tao moi thanh cong (khong can refresh la trang)
-            getDataUsers();
+            getDataUsers(currentPage, pageSize);
 
         } else {
             notification.error({

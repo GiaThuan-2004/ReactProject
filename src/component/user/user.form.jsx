@@ -3,7 +3,7 @@ import { useState } from "react";
 import { createUserApi } from '../../service/api.service';
 
 
-const UserForm = ({ getDataUsers }) => {
+const UserForm = ({ getDataUsers, currentPage, pageSize }) => {
     // console.log(getDataUsers)
     const [nameState, setNameState] = useState("");
     const [emailState, setEmailState] = useState("");
@@ -28,7 +28,7 @@ const UserForm = ({ getDataUsers }) => {
             setIsCreateModalOpen(false);
 
             //render lai table user sao khi tao moi thanh cong (khong can refresh la trang)
-            getDataUsers();
+            getDataUsers(currentPage, pageSize);
 
         } else {
             notification.error({

@@ -1,30 +1,45 @@
 import { Link, NavLink } from "react-router-dom";
 import { Menu } from 'antd';
 import { useState } from "react";
-import { HomeOutlined, UserOutlined, BookOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined, BookOutlined, SettingOutlined } from '@ant-design/icons';
 
 const items = [
     {
         key: 'home',
         label: (
-            <Link className="list-item" to="/">Home</Link>
+            <Link to="/">Home</Link>
         ),
         icon: <HomeOutlined />
     },
     {
         key: 'books',
         label: (
-            <Link className="list-item" to="/books">Books</Link>
+            <Link to="/books">Books</Link>
         ),
         icon: <BookOutlined />
     },
     {
         key: 'users',
         label: (
-            <Link className="list-item" to="/users">Users</Link>
+            <Link to="/users">Users</Link>
         ),
         icon: <UserOutlined />
     },
+    {
+        label: 'Settings',
+        key: 'setting',
+        icon: <SettingOutlined />,
+        children: [
+            {
+                type: 'group',
+                label: (<Link style={{ color: "black" }} to="/login">Login</Link>)
+            },
+            {
+                type: 'group',
+                label: (<Link style={{ color: "black" }} to="/register">Register</Link>)
+            }
+        ],
+    }
 ];
 
 const Header = () => {

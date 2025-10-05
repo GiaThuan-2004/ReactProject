@@ -1,0 +1,67 @@
+.login-form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.action-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.toHome {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.line {
+    width: 100%;
+    border: 1px solid #ececec;
+    margin-top: 15px;
+}
+
+.register-guide {
+    margin-top: 15px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .login-form {
+        max-width: 90%;
+        padding: 30px;
+        margin: 30px auto;
+    }
+
+    .action-block {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .toHome {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .login-form {
+        max-width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 8px;
+    }
+
+    .action-block {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .toHome {
+        font-size: 14px;
+    }
+}

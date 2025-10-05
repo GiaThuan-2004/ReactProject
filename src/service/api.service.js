@@ -50,4 +50,16 @@ const upLoadFileApi = (file, folder) => {
     return axios.post(BACKEND_URL, formData, config)
 }
 
-export { createUserApi, updateUserApi, getAllUserApi, deleteUserApi, upLoadFileApi }
+const registerUserApi = (fullName, email, password, phone) => {
+    const URL_BACKEND = '/api/v1/user/register'
+
+    const data = {
+        fullName: fullName,
+        email: email,
+        password: password,
+        phone: phone
+    }
+    return axios.post(URL_BACKEND, data)
+}
+
+export { createUserApi, updateUserApi, getAllUserApi, deleteUserApi, upLoadFileApi, registerUserApi }

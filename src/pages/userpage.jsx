@@ -8,7 +8,7 @@ import { getAllUserApi } from '../service/api.service';
 const UserPage = () => {
     const [dataUsers, setDataUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1)
-    const [pageSize, setPageSize] = useState(6)
+    const [pageSize, setPageSize] = useState(10)
     const [total, setTotal] = useState(0)
 
     // [currentPage, pageSize]

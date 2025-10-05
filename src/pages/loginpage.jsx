@@ -1,12 +1,30 @@
-import { Input, Button, Form, notification } from 'antd'
+import { Input, Button, Form, notification, message } from 'antd'
 import './loginPage.css'
 import { Link } from 'react-router-dom'
 import { ArrowRightOutlined } from '@ant-design/icons'
+import { loginApi } from '../service/api.service'
+import { useState } from 'react'
+import { useNavigate } from "react-router"
 
 const LoginPage = () => {
     const [form] = Form.useForm()
-    const onFinish = (values) => {
-        console.log(values.email, values.password)
+    const [loaded, setLoaded] = useState(false)
+    const navigate = useNavigate()
+
+    const onFinish = async (values) => {
+        setLoaded(true)
+        const response = await loginApi(values.email, values.password)
+        if (response.data) {
+            message.success('Login Success')
+            navigate('/')
+        } else {
+
+            notification.error({
+                message: 'Login Failed',
+                description: JSON.stringify(response.message)
+            })
+        }
+        setLoaded(false)
     }
     return (
         <Form
@@ -63,6 +81,7 @@ const LoginPage = () => {
 
             <div className="action-block">
                 <Button
+                    loading={loaded}
                     onClick={() => { form.submit() }}
                     type='primary'
                     style={{ maxWidth: "100px" }}>Login

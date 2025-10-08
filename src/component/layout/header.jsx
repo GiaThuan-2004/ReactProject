@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { Menu } from 'antd';
 import { useContext, useState } from "react";
-import { HomeOutlined, UserOutlined, BookOutlined, SettingOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined, BookOutlined, LoginOutlined, AliwangwangOutlined, LogoutOutlined } from '@ant-design/icons';
 import { AuthContext } from "../context/auth.context";
+import { icons } from "antd/es/image/PreviewGroup";
+
 
 const items = [
     {
@@ -27,17 +29,21 @@ const items = [
         icon: <UserOutlined />
     },
     {
-        label: 'Settings',
+        key: 'login',
+        label: (
+            <Link to="/login">Login</Link>
+        ),
+        icon: <LoginOutlined />
+    },
+    {
+        label: 'Welcome',
         key: 'setting',
-        icon: <SettingOutlined />,
+        icon: <AliwangwangOutlined />,
         children: [
             {
-                key: 'login',
-                label: (<Link style={{ color: "black", display: "block" }} to="/login">Login</Link>)
-            },
-            {
-                key: 'register',
-                label: (<Link style={{ color: "black", display: "block" }} to="/register">Register</Link>)
+                label: 'Log out',
+                key: 'logout',
+                icon: <LogoutOutlined />
             }
         ],
     }

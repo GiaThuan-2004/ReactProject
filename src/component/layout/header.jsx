@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { Menu } from 'antd';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { HomeOutlined, UserOutlined, BookOutlined, SettingOutlined } from '@ant-design/icons';
+import { AuthContext } from "../context/auth.context";
 
 const items = [
     {
@@ -31,12 +32,12 @@ const items = [
         icon: <SettingOutlined />,
         children: [
             {
-                type: 'group',
-                label: (<Link style={{ color: "black" }} to="/login">Login</Link>)
+                key: 'login',
+                label: (<Link style={{ color: "black", display: "block" }} to="/login">Login</Link>)
             },
             {
-                type: 'group',
-                label: (<Link style={{ color: "black" }} to="/register">Register</Link>)
+                key: 'register',
+                label: (<Link style={{ color: "black", display: "block" }} to="/register">Register</Link>)
             }
         ],
     }
@@ -44,9 +45,11 @@ const items = [
 
 const Header = () => {
 
+    const { user } = useContext(AuthContext)
+    console.log(user)
+
     const [current, setCurrent] = useState('');
     const onClick = e => {
-        console.log('click ', e);
         setCurrent(e.key);
     };
 

@@ -9,6 +9,7 @@ import UserPage from './pages/userpage.jsx'
 import BookPage from './pages/bookpage.jsx'
 import ToDoApp from './component/todo/todoApp.jsx'
 import ErrorPage from './pages/error.jsx'
+import { AuthContextWrapper } from './component/context/auth.context.jsx'
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,8 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
-  ,
+  <AuthContextWrapper>
+    <RouterProvider router={router} />
+  </AuthContextWrapper>
+
 )

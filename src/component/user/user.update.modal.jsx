@@ -22,7 +22,6 @@ const UpdateModal = ({ dataUpdate, setDataUpdate, isUpdateModalOpen, setIsUpdate
     const getUpdate = async () => {
 
         const response = await updateUserApi(idState, nameState, phoneState)
-        console.log({ currentPage, pageSize })
         // Tao thong bao khi tao user thanh cong
         if (response.data) {
             notification.success({

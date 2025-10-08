@@ -3,10 +3,12 @@ import './loginPage.css'
 import { Link } from 'react-router-dom'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { loginApi } from '../service/api.service'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from "react-router"
+import { AuthContext } from '../component/context/auth.context'
 
 const LoginPage = () => {
+    const { setUser } = useContext(AuthContext)
     const [form] = Form.useForm()
     const [loaded, setLoaded] = useState(false)
     const navigate = useNavigate()
@@ -15,6 +17,8 @@ const LoginPage = () => {
         setLoaded(true)
         const response = await loginApi(values.email, values.password)
         if (response.data) {
+            localStorage.setItem('access_token', response.data.access_token)
+            setUser(response.data.user)
             message.success('Login Success')
             navigate('/')
         } else {
@@ -65,10 +69,10 @@ const LoginPage = () => {
                         required: true,
                         message: 'Please input your password!'
                     },
-                    {
-                        pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                        message: "Password must have at least one alphabet, one number and 8 character",
-                    }
+                    // {
+                    //     pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                    //     message: "Password must have at least one alphabet, one number and 8 character",
+                    // }
                 ]}
             >
                 <Input.Password

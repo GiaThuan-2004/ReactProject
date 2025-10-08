@@ -11,6 +11,7 @@ import ToDoApp from './component/todo/todoApp.jsx'
 import ErrorPage from './pages/error.jsx'
 import { AuthContextWrapper, AuthContext } from './component/context/auth.context.jsx'
 import { ParentComponent, RenderComponent } from './component/learn/PropChildren.jsx'
+import { PrivateRouter } from './pages/private.router.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/books",
-        element: <BookPage />
+        element: (
+          <PrivateRouter>
+            <BookPage />
+          </PrivateRouter>)
       }
     ]
   },

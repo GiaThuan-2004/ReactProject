@@ -76,6 +76,8 @@ const LoginPage = () => {
                 ]}
             >
                 <Input.Password
+                    onKeyDown={event => event.key === 'Enter' && form.submit()}
+
                     onInput={() => {
                         // clear error khi đang gõ
                         form.setFields([{ name: "password", errors: [] }]);

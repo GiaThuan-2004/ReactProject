@@ -7,7 +7,6 @@ import { icons } from "antd/es/image/PreviewGroup";
 
 const Header = () => {
     const { user } = useContext(AuthContext)
-    console.log(user)
     const items = [
         {
             key: 'home',
@@ -54,7 +53,6 @@ const Header = () => {
             ],
         }] : [])
     ];
-
 
     const [current, setCurrent] = useState('');
     const onClick = e => {

@@ -5,54 +5,56 @@ import { HomeOutlined, UserOutlined, BookOutlined, LoginOutlined, AliwangwangOut
 import { AuthContext } from "../context/auth.context";
 import { icons } from "antd/es/image/PreviewGroup";
 
-
-const items = [
-    {
-        key: 'home',
-        label: (
-            <Link to="/">Home</Link>
-        ),
-        icon: <HomeOutlined />
-    },
-    {
-        key: 'books',
-        label: (
-            <Link to="/books">Books</Link>
-        ),
-        icon: <BookOutlined />
-    },
-    {
-        key: 'users',
-        label: (
-            <Link to="/users">Users</Link>
-        ),
-        icon: <UserOutlined />
-    },
-    {
-        key: 'login',
-        label: (
-            <Link to="/login">Login</Link>
-        ),
-        icon: <LoginOutlined />
-    },
-    {
-        label: 'Welcome',
-        key: 'setting',
-        icon: <AliwangwangOutlined />,
-        children: [
-            {
-                label: 'Log out',
-                key: 'logout',
-                icon: <LogoutOutlined />
-            }
-        ],
-    }
-];
-
 const Header = () => {
-
     const { user } = useContext(AuthContext)
     console.log(user)
+    const items = [
+        {
+            key: 'home',
+            label: (
+                <Link to="/">Home</Link>
+            ),
+            icon: <HomeOutlined />
+        },
+
+        {
+            key: 'books',
+            label: (
+                <Link to="/books">Books</Link>
+            ),
+            icon: <BookOutlined />
+        },
+
+        {
+            key: 'users',
+            label: (
+                <Link to="/users">Users</Link>
+            ),
+            icon: <UserOutlined />
+        },
+
+        ...(!user.id ? [{
+            key: 'login',
+            label: (
+                <Link to="/login">Login</Link>
+            ),
+            icon: <LoginOutlined />
+        }] : []),
+
+        ...(user.id ? [{
+            label: `Welcome ${user.fullName}`,
+            key: 'setting',
+            icon: <AliwangwangOutlined />,
+            children: [
+                {
+                    label: 'Log out',
+                    key: 'logout',
+                    icon: <LogoutOutlined />
+                }
+            ],
+        }] : [])
+    ];
+
 
     const [current, setCurrent] = useState('');
     const onClick = e => {

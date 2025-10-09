@@ -3,7 +3,6 @@ import { Menu, message } from 'antd';
 import { useContext, useState } from "react";
 import { HomeOutlined, UserOutlined, BookOutlined, LoginOutlined, AliwangwangOutlined, LogoutOutlined } from '@ant-design/icons';
 import { AuthContext } from "../context/auth.context";
-import { icons } from "antd/es/image/PreviewGroup";
 import { logoutApi } from "../../service/api.service";
 
 const Header = () => {

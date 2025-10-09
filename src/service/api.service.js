@@ -88,10 +88,24 @@ const getBookApi = (currentPage, pageSize) => {
     const BACKEND_URL = `/api/v1/book?current=${currentPage}&pageSize=${pageSize}`
     return axios.get(BACKEND_URL)
 }
+// 19-3c575c235f06fada416bac02f3116043.jpg
+const createBookApi = (title, price, quantity, author, category) => {
+    const BACKEND_URL = '/api/v1/book'
+    const data = {
+        thumbnail: '19-3c575c235f06fada416bac02f3116043.jpg',
+        mainText: title,
+        price: price,
+        quantity: quantity,
+        author: author,
+        category: "Arts"
+    }
+
+    return axios.post(BACKEND_URL, data)
+}
 
 export {
     createUserApi, updateUserApi, getAllUserApi,
     deleteUserApi, upLoadFileApi, registerUserApi,
     loginApi, getAccountApi, logoutApi,
-    getBookApi
+    getBookApi, createBookApi
 }

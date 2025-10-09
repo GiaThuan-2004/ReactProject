@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Table } from "antd";
+import CreateBookModal from "./book.create";
 
 
-const TableBook = ({ currentPage, pageSize, setCurrentPage, setPageSize, data, total }) => {
+const TableBook = (
+    { currentPage, pageSize, setCurrentPage,
+        setPageSize, data, total, getBook }) => {
 
     const columns = [
         {
@@ -67,6 +70,11 @@ const TableBook = ({ currentPage, pageSize, setCurrentPage, setPageSize, data, t
     return (
         <>
             {/*  */}
+            <CreateBookModal
+                getBook={getBook}
+                currentPage={currentPage}
+                pageSize={pageSize}
+            />
             <Table
                 columns={columns}
                 dataSource={data}
@@ -88,4 +96,4 @@ const TableBook = ({ currentPage, pageSize, setCurrentPage, setPageSize, data, t
     );
 }
 
-export { TableBook }
+export default TableBook

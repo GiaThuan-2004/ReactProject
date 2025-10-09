@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button } from "antd";
-import { TableBook } from "../component/book/book.table";
+import TableBook from "../component/book/book.table";
 import { getBookApi } from "../service/api.service";
 import { useEffect, useState } from "react";
 
@@ -27,10 +27,6 @@ const BookPage = () => {
 
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px' }}>
-                <h3 style={{ fontSize: '40px' }}>Table Book</h3>
-                <Button type="primary" size="large">Create new book</Button>
-            </div>
             <TableBook
                 currentPage={currentPage}
                 pageSize={pageSize}
@@ -38,6 +34,7 @@ const BookPage = () => {
                 setPageSize={setPageSize}
                 data={data}
                 total={total}
+                getBook={getBook}
             />
         </>
     )

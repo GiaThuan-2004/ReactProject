@@ -1,4 +1,3 @@
-
 import Header from "./component/layout/header"
 import Footer from "./component/layout/footer"
 import { Outlet } from "react-router-dom"
@@ -25,7 +24,7 @@ const App = () => {
   const getUser = async () => {
     const response = await getAccountApi()
     if (response.data) {
-      await delay(3000)
+      // await delay(3000)
       setUser(response.data.user)
     }
     setIsLoading(false)

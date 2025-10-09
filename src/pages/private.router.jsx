@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../component/context/auth.context";
 import { Button, Result } from 'antd';
+import { Link } from "react-router-dom";
 
 
 const PrivateRouter = ({ children }) => {
@@ -19,7 +20,7 @@ const PrivateRouter = ({ children }) => {
             status="403"
             title="Unauthorized"
             subTitle="Please login to use this feature"
-            extra={<Button type="primary">Back Home</Button>}
+            extra={<Button type="primary"><Link to="/login">Go to login</Link></Button>}
         />
     );
 }

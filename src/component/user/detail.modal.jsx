@@ -25,7 +25,6 @@ const DetailModal = (
         }
         // I've kept this example simple by using the first image instead of multiple
         setFileState(event.target.files[0])
-
     }
 
     const saveFileToSever = async () => {

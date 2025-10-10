@@ -97,15 +97,31 @@ const createBookApi = (title, price, quantity, author, category) => {
         price: price,
         quantity: quantity,
         author: author,
-        category: "Arts"
+        category: category
     }
 
     return axios.post(BACKEND_URL, data)
+}
+
+const updateBookApi = (_id, thumbnail = '19-3c575c235f06fada416bac02f3116043.jpg',
+    mainText, author, price, quantity,
+    category) => {
+    const BACKEND_URL = '/api/v1/book'
+    const data = {
+        _id: _id,
+        thumbnail: thumbnail,
+        mainText: mainText,
+        author: author,
+        price: price,
+        quantity: quantity,
+        category: category
+    }
+    return axios.put(BACKEND_URL, data)
 }
 
 export {
     createUserApi, updateUserApi, getAllUserApi,
     deleteUserApi, upLoadFileApi, registerUserApi,
     loginApi, getAccountApi, logoutApi,
-    getBookApi, createBookApi
+    getBookApi, createBookApi, updateBookApi
 }

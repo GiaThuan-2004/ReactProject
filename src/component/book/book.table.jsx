@@ -2,11 +2,16 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Table } from "antd";
 import CreateBookModal from "./book.create";
+import { useState } from "react";
+import { BookDetailModal } from "./book.detail";
 
 
 const TableBook = (
     { currentPage, pageSize, setCurrentPage,
         setPageSize, data, total, getBook }) => {
+
+    const [isDrawerDetailOpen, setIsDrawerDetailOpen] = useState(false)
+    const [detailData, setDetailData] = useState(null)
 
     const columns = [
         {
@@ -25,7 +30,15 @@ const TableBook = (
             dataIndex: '_id',
             render: (_, record) => {
                 return (
-                    <a href="#!">{record._id}</a>
+                    <>
+                        <a href="#!"
+                            onClick={() => {
+                                setIsDrawerDetailOpen(true)
+                                setDetailData(record)
+                            }}
+                            style={{ cursor: 'pointer' }}
+                        >{record._id}</a>
+                    </>
                 )
             }
         },
@@ -70,11 +83,7 @@ const TableBook = (
     return (
         <>
             {/*  */}
-            <CreateBookModal
-                getBook={getBook}
-                currentPage={currentPage}
-                pageSize={pageSize}
-            />
+
             <Table
                 columns={columns}
                 dataSource={data}
@@ -89,6 +98,14 @@ const TableBook = (
                     }
                 }
                 onChange={onChangeTable}
+            />
+            <BookDetailModal
+                isDrawerDetailOpen={isDrawerDetailOpen}
+                setIsDrawerDetailOpen={setIsDrawerDetailOpen}
+                detailData={detailData}
+                currentPage={currentPage}
+                pageSize={pageSize}
+                getBook={getBook}
             />
 
 

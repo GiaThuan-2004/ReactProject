@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button } from "antd";
 import TableBook from "../component/book/book.table";
 import { getBookApi } from "../service/api.service";
 import { useEffect, useState } from "react";
+import CreateBookModal from "../component/book/book.create";
 
 const BookPage = () => {
 
@@ -27,6 +27,12 @@ const BookPage = () => {
 
     return (
         <>
+            <CreateBookModal
+                getBook={getBook}
+                currentPage={currentPage}
+                pageSize={pageSize}
+            />
+
             <TableBook
                 currentPage={currentPage}
                 pageSize={pageSize}

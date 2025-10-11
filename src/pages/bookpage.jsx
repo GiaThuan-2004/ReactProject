@@ -24,7 +24,6 @@ const BookPage = () => {
             setTotal(response.data.meta.total)
         }
     }
-
     return (
         <>
             <CreateBookModal

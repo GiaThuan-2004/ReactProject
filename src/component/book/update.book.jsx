@@ -57,7 +57,6 @@ const UpdateBookModal = (
     const closeModal = () => {
         setIsUpdateBookModalOpen(false)
     }
-    console.log(updateData)
     return (
         <>
             {

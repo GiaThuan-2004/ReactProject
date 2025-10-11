@@ -119,9 +119,15 @@ const updateBookApi = (_id, thumbnail = '19-3c575c235f06fada416bac02f3116043.jpg
     return axios.put(BACKEND_URL, data)
 }
 
+const deleteBookApi = (id) => {
+    const BACKEND_URL = `/api/v1/book/${id}`
+    return axios.delete(BACKEND_URL)
+}
+
 export {
     createUserApi, updateUserApi, getAllUserApi,
     deleteUserApi, upLoadFileApi, registerUserApi,
     loginApi, getAccountApi, logoutApi,
-    getBookApi, createBookApi, updateBookApi
+    getBookApi, createBookApi, updateBookApi,
+    deleteBookApi
 }

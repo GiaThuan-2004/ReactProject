@@ -5,6 +5,7 @@ import CreateBookModal from "./book.create";
 import { useState } from "react";
 import { BookDetailModal } from "./book.detail";
 import UpdateBookModal from "./update.book";
+import DeleteBook from "./book.delete";
 
 
 const TableBook = (
@@ -74,7 +75,13 @@ const TableBook = (
                                 setUpdateData(record)
                             }}
                         />
-                        <DeleteOutlined style={{ color: '#fa2525', fontSize: '20px' }} />
+                        <DeleteBook
+                            currentPage={currentPage}
+                            pageSize={pageSize}
+                            getBook={getBook}
+                            data={data}
+                            id={record._id}
+                        />
                     </div>
                 );
             }

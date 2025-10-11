@@ -12,6 +12,7 @@ import ErrorPage from './pages/error.jsx'
 import { AuthContextWrapper, AuthContext } from './component/context/auth.context.jsx'
 import { ParentComponent, RenderComponent } from './component/learn/PropChildren.jsx'
 import { PrivateRouter } from './pages/private.router.jsx'
+import '../node_modules/nprogress/nprogress.css'
 
 const router = createBrowserRouter([
   {

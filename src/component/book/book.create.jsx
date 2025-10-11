@@ -48,7 +48,7 @@ const CreateBookModal = ({ getBook, currentPage, pageSize }) => {
                 >Create new book</Button>
             </div>
             <Modal
-                title="Basic Modal"
+                title="Create Book"
                 closable={{ 'aria-label': 'Custom Close Button' }}
                 open={isModalCreateOpen}
                 onOk={() => form.submit()}
@@ -144,66 +144,6 @@ const CreateBookModal = ({ getBook, currentPage, pageSize }) => {
                             </Form.Item>
                         </Col>
                     </Row>
-
-                    {/* <Space style={{ width: '100%' }} size="large">
-                        <Form.Item label="Price" name="price" validateTrigger="onChange" style={{ flex: 1 }}
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please enter price'
-                                }
-                            ]}>
-                            <InputNumber
-                                style={{ width: '100%' }}
-                                min={0}
-                                formatter={(value) => value ? `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VND' : '0 VND'}
-                                parser={(value) => value.replace(/[^\d]/g, '')}
-                            // onInput={() => form.setFields([{ name: "price", errors: [] }])}
-                            />
-                        </Form.Item>
-                        <Form.Item label="Quantity" name="quantity" validateTrigger="onChange" style={{ flex: 1 }}
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please enter quantity'
-                                }
-                            ]}>
-
-                            <InputNumber
-                                min={0}
-                                style={{ width: '100%' }}
-                            // onInput={() => form.setFields([{ name: "quantity", errors: [] }])}
-                            />
-                        </Form.Item>
-
-                        <Form.Item label="Category" name="category" validateTrigger="onChange" style={{ flex: 1 }}
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please select category'
-                                }
-                            ]}
-                        >
-                            <Select
-                                style={{ width: '100%' }}
-                                onClick={() => form.setFields([{ name: "category", errors: [] }])}
-                                placeholder="Select a category"
-                                options={[
-                                    { value: 'Arts', label: 'Arts' },
-                                    { value: 'Business', label: 'Business' },
-                                    { value: 'Comics', label: 'Comics' },
-                                    { value: 'Cooking', label: 'Cooking' },
-                                    { value: 'Entertainment', label: 'Entertainment' },
-                                    { value: 'History', label: 'History' },
-                                    { value: 'Music', label: 'Music' },
-                                    { value: 'Sports', label: 'Sports' },
-                                    { value: 'Teen', label: 'Teen' },
-                                    { value: 'Travel', label: 'Travel' },
-                                ]}
-
-                            />
-                        </Form.Item>
-                    </Space> */}
                 </Form>
             </Modal>
         </>

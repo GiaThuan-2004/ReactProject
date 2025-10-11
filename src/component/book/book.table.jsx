@@ -4,6 +4,7 @@ import { Table } from "antd";
 import CreateBookModal from "./book.create";
 import { useState } from "react";
 import { BookDetailModal } from "./book.detail";
+import UpdateBookModal from "./update.book";
 
 
 const TableBook = (
@@ -12,6 +13,9 @@ const TableBook = (
 
     const [isDrawerDetailOpen, setIsDrawerDetailOpen] = useState(false)
     const [detailData, setDetailData] = useState(null)
+
+    const [isUpdateBookModalOpen, setIsUpdateBookModalOpen] = useState(false)
+    const [updateData, setUpdateData] = useState(null)
 
     const columns = [
         {
@@ -63,7 +67,13 @@ const TableBook = (
             render: (_, record) => {
                 return (
                     <div style={{ display: 'flex', gap: '10px' }}>
-                        <EditOutlined style={{ color: '#ff9c38', fontSize: '20px' }} />
+                        <EditOutlined
+                            style={{ color: '#ff9c38', fontSize: '20px', cursor: 'pointer' }}
+                            onClick={() => {
+                                setIsUpdateBookModalOpen(true)
+                                setUpdateData(record)
+                            }}
+                        />
                         <DeleteOutlined style={{ color: '#fa2525', fontSize: '20px' }} />
                     </div>
                 );
@@ -107,7 +117,14 @@ const TableBook = (
                 pageSize={pageSize}
                 getBook={getBook}
             />
-
+            <UpdateBookModal
+                isUpdateBookModalOpen={isUpdateBookModalOpen}
+                setIsUpdateBookModalOpen={setIsUpdateBookModalOpen}
+                updateData={updateData}
+                currentPage={currentPage}
+                pageSize={pageSize}
+                getBook={getBook}
+            />
 
         </>
     );
